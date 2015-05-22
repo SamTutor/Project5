@@ -1,0 +1,12 @@
+Sources referred to
+www.w3schools.com
+www.stackoverflow.com
+class discussion Board etc
+GitHub
+https://github.com/foreswing/Project5
+https://developer.yahoo.com/weather/
+https://www.weather.com
+https://developers.google.com/maps/
+https://developers.google.com/places/
+http://www.onextrapixel.com/2011/08/22/adding-weather-to-your-site-with-jquery-and-yql/
+
