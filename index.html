@@ -2,26 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-<script type="text/javascript" src="js/offline.min.js"></script>
-
-<link rel="stylesheet" href="css/offline-theme-chrome.css" />
-<link rel="stylesheet" href="css/offline-language-english.css" />
-
-<script>
-var run = function(){
-  var req = new XMLHttpRequest();
-  req.timeout = 5000;
-  req.open('GET', 'http://localhost:8888/walter/0', true);
-  req.send();
-}
-
-setInterval(run, 3000);
-</script>
+	<!-- What happens when the internet goes down -->
+	<link rel="stylesheet" href="lib/themes/offline-theme-chrome.css" />
+	<link rel="stylesheet" href="lib/themes/offline-language-english.css" />
+	<script src="lib/offline.min.js"></script>
+	<script src="offline-simulate-ui.min.js"></script>
 
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<title>Project 5 Nanodegree Udacity</title>
 
 	<link rel="stylesheet" href="css/style.css">
+
 	<!-- Loading the Google_API -->
 	<script asynch src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 	<script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
