@@ -8,13 +8,14 @@
 <link rel="stylesheet" href="css/offline-language-english.css" />
 
 <script>
-alert(Offline.check());
-Offline.on('up', function() {
-    alert('up');
-});
-Offline.on('down', function() {
-    alert('down')
-});
+var run = function(){
+  var req = new XMLHttpRequest();
+  req.timeout = 5000;
+  req.open('GET', 'http://localhost:8888/walter/0', true);
+  req.send();
+}
+
+setInterval(run, 3000);
 </script>
 
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
