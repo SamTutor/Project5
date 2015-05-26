@@ -2,12 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
+<script src="js/offline.min.js"></script>
+<script src="js/snake.js"></script>
+
+<link rel="stylesheet" href="css/offline-theme-chrome.css" />
+<link rel="stylesheet" href="css/offline-language-english.css" />
+
+
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<title>Project 5 Nanodegree Udacity</title>
 
 	<link rel="stylesheet" href="css/style.css">
 	<!-- Loading the Google_API -->
-	<script asynch src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>  
+	<script asynch src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
 	<script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 
@@ -17,10 +24,10 @@
   <div>
     <!-- Create the Container to hold the title-->
   	<div><h1 class="container_title">Visting Toyko, Japan</h1></div>
-    
+
     <!-- Create the Container to hold the map -->
     <div class="container_map" id="googleMap"></div>
-  
+
     <!--- Create the Container to hold the list -->
     <div class="container_list">
 
@@ -28,7 +35,7 @@
       <div>
         <input class="search_class" type="search" placeholder="Search..." data-bind="value: query, valueUpdate: 'afterkeydown'">
         <BUTTON class="button_class" onclick = "searchcat('all')">RESET</button>
-      </div> 
+      </div>
 
       <div><BR></div>
 
@@ -38,21 +45,21 @@
         <BUTTON onclick = "searchcat('hotel')" class="button_class"><IMG SRC="images/hotellist.png" width="35" alt="HOTEL"><BR>HOTEL</button>
         <BUTTON onclick = "searchcat('shopping')" class="button_class"><IMG SRC="images/shoplist.png" width="35" alt="SHOPS"><BR>SHOPS</button>
         <BUTTON onclick = "searchcat('sites')" class="button_class"><IMG SRC="images/cameralist.png" width="35" alt="ATTRACTIONS"><BR>ATTRACTIONS</button>
-      </div> 
+      </div>
 
       <!-- List the Marker Locations -->
       <div id="googleList">
         <ul data-bind="foreach: listArray">
           <img data-bind="attr: {src: iconlist}, click: openinfowindow" width="20px">&nbsp<span class="list_class" data-bind="text: title, click: openinfowindow"></span>&nbsp(<a class="web_class" data-bind="attr: {href: url}" target="_blank">website</a>)<br>
           </ul>
-      </div> 
+      </div>
 
     </div>
- 
+
   </div>
 
   <script type="text/javascript"  asynch src='js/knockout-3.3.0.js'></script>
-  <script type="text/javascript"  asynch src='js/ViewMod.js'></script>    
+  <script type="text/javascript"  asynch src='js/ViewMod.js'></script>
 
 </body>
 
