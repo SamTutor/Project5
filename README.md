@@ -1,16 +1,17 @@
 # Project5
 
-Neighborhood Project#5 Visiting Toyko, Japan Google Map View Version 1.0 05/26/2015
+Neighborhood 
+Project#5 
+Visiting Toyko, Japan 
+Google Map View 
+Version 1.0 
+05/26/2015
 
 
 What is it?
 -----------
+The Visting Toyko, Japan Google Map View is a tool that can be used to obtain information on Hotels, Restaurants, Shops and Attractions to visit while in Toyko Japan. You can filter the Map via a search tool or predefined buttons like FOOD that can narrow down the search. Also when you click on the marker an infowindow will appear to provide more information about that particular site.
 
-The Visting Toyko, Japan Google Map View is a tool that can be used to obtain information on Hotels, Restaurants, Shops and Attractions to 
-
-visit while in Toyko Japan. You can filter the Map via a search tool or predefined buttons like FOOD that can narrow down the search. Also 
-
-when you click on the marker an infowindow will appear to provide more information about that particular site.
 
 Installation
 ----------------
@@ -19,9 +20,11 @@ http://htmlpreview.github.io/?https://github.com/samauto/Project5/blob/master/in
 
 2. You can click the Download Zip button which will download the files to your computer where you can run it from your PC etc or upload it to your own website
 
+
 Requirements
 ------------------
 1. Internet Access
+
 
 How to run the App
 ------------------
