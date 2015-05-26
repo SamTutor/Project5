@@ -3,11 +3,19 @@
 
 <head>
 <script src="js/offline.min.js"></script>
-<script src="js/snake.js"></script>
 
 <link rel="stylesheet" href="css/offline-theme-chrome.css" />
 <link rel="stylesheet" href="css/offline-language-english.css" />
 
+<script>
+alert(Offline.check());
+Offline.on('up', function() {
+    alert('up');
+});
+Offline.on('down', function() {
+    alert('down')
+});
+</script>
 
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<title>Project 5 Nanodegree Udacity</title>

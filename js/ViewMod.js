@@ -2,7 +2,7 @@
 
 //Marker Locations
 var Model = {
-    markerlocations: 
+    markerlocations:
     [
         {category:'all',
         subcategory:'Hotel',
@@ -88,7 +88,6 @@ var Model = {
         yahooloczip: 'JAXX0085'
         },
 
-       
         {category:'all',
         subcategory:'Food',
         title: 'Tapas Molecular Bar',
@@ -101,7 +100,6 @@ var Model = {
         yahooloczip: 'JAXX0085'
         },
 
-       
         {category:'all',
         subcategory:'Food',
         title: 'Waentei-Kikko',
@@ -184,7 +182,7 @@ var Model = {
         iconlist: 'images/shoplist.png',
         placeID: 'ChIJ0Zw0SZfyGGARhpxPKj1bX1s',
         yahooloczip: 'JAXX0085'
-        }   
+        }
     ]//end of markerlocations
 };//end of Model
 
@@ -200,23 +198,23 @@ var ViewModel = function () {
     var markerArray = Model.markerlocations;
 
     //List(s) that stores the marker locations
-    var self = this;    
+    var self = this;
     self.listArray = ko.observableArray();
     self.filterArray = ko.observableArray();
     self.allArray = ko.observableArray();
     self.listArray.splice(0);
     self.filterArray.splice(0);
-   
+
     //Searches the markers
     self.query = ko.observable("");
     self.searchItem = ko.observableArray();
-	
+
 	//initialize the variables for the google place details of the markers
 	var placecontent;
 	var service;
-       
-    // Initializing the Map 
-    var initialize = function() 
+
+    // Initializing the Map
+    var initialize = function()
     {
         // Default Map Properties
         var mapProp = {
@@ -228,7 +226,7 @@ var ViewModel = function () {
             scaleControl:true,
             streetViewControl:true,
             overviewMapControl:true,
-            rotateControl:true,    
+            rotateControl:true,
             mapTypeId: google.maps.MapTypeId.ROADMAP};
 
         // Assign var map to have the new created map which will be inside the container "googleMap"
@@ -241,6 +239,7 @@ var ViewModel = function () {
 
         // Event Listener that opens up the infowindow when the user clicks on the central marker
         google.maps.event.addListener(marker, 'click', function() {
+            map.setCenter(myCenter);
             infomarker.open(map,marker);});
 
         // Event Listener that will resize the map when the window changes
@@ -253,8 +252,8 @@ var ViewModel = function () {
     	// loops thru all the markerlocations to place them on the list and map
         for (var x = 0;  x <= markerArray.length-1; x++)
         {
-        	var mymarker = new google.maps.LatLng(markerArray[x].lat, markerArray[x].longit);;
-		    
+        	var mymarker = new google.maps.LatLng(markerArray[x].lat, markerArray[x].longit);
+
             var icon = {
                 url: markerArray[x].icon, // url
                 scaledSize: new google.maps.Size(50, 50), // scaled size
@@ -262,13 +261,13 @@ var ViewModel = function () {
                 anchor: new google.maps.Point(0, 0) // anchor
             };//end of icon
 
-		    var contentwindow = 
+		    var contentwindow =
                '<div class="info-window">' +
-               		'<div class="name-window"><img class="icon-window" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' :&nbsp'+ markerArray[x].title.toUpperCase() + '</div>' +  
+               		'<div class="name-window"><img class="icon-window" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' :&nbsp'+ markerArray[x].title.toUpperCase() + '</div>' +
                		'<div class="geo-window">Latitude: ' + markerArray[x].lat + ' &nbsp Longitude: ' + markerArray[x].longit + ' </div></div>'+
    					'<div class="web-window"><a href=' + markerArray[x].url + ' target="_blank">Go to website for more info</a></div>'+
    				'</div>';
-   			
+
             var plmarker = new google.maps.Marker({
                 position: mymarker,
                 title: markerArray[x].title,
@@ -282,33 +281,33 @@ var ViewModel = function () {
                 info: contentwindow,
                 worldzip: markerArray[x].yahooloczip
             });//end of plmarker
-        
+
             self.filterArray.push(plmarker);
             self.listArray.push(plmarker);
 
-            jpzip = plmarker.worldzip;
-			contentString = plmarker.info;
-			placedetailID = plmarker.placeid;
+            var jpzip = plmarker.worldzip;
+			var contentString = plmarker.info;
+			var placedetailID = plmarker.placeid;
 
 
 
 
 
-  			// Event Listener that opens up the infowindow when the user clicks on the marker  	
-			google.maps.event.addListener(plmarker, 'click', 
-				function (content, ID, jzip) 
+  			// Event Listener that opens up the infowindow when the user clicks on the marker
+			google.maps.event.addListener(plmarker, 'click',
+				function (content, ID, jzip)
 				{
-					return function() 
+					return function()
 					{
-						
+
 
 
 						//contain the place ID of the marker location
 						var request = {placeId: ID};
 
-						//get place details from google places api 
-						service = new google.maps.places.PlacesService(map);   
-						service.getDetails(request, 
+						//get place details from google places api
+						service = new google.maps.places.PlacesService(map);
+						service.getDetails(request,
 							function(details, status) {
 								$(function(){
  									// Specify the ZIP/location code and units (f or c)
@@ -319,7 +318,7 @@ var ViewModel = function () {
 								    var query = "SELECT item.condition FROM weather.forecast WHERE location='" + loc + "' AND u='" + u + "'";
     								var cacheBuster = Math.floor((new Date().getTime()) / 1200 / 1000);
     								var url = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&_nocache=' + cacheBuster;
- 
+
 
 
 								    window['wxCallback'] = function(data) {
@@ -330,24 +329,24 @@ var ViewModel = function () {
         									}).attr({
             									title: info.text
         										});
-        								
+
         								$('#wxIcon2').append('<img src="http://l.yimg.com/a/i/us/we/52/' + info.code + '.gif" width="34" height="34" title="' + info.text + '" />');
         								$('#wxTemp').html(info.temp + '&deg;' + (u.toUpperCase()));
     								};
- 
+
 							    	$.ajax({
         								url: url,
         								dataType: 'jsonp',
         								cache: true,
         								jsonpCallback: 'wxCallback'
     									});
-								});	
+								});
 
 
         						if (status == google.maps.places.PlacesServiceStatus.OK) {
-        				        							
+
         							//initialize variables
-        							var j=0; 
+        							var j=0;
         							var photogroup='';
         							var user_ratings='';
         							var formaladdress='';
@@ -355,31 +354,30 @@ var ViewModel = function () {
         							var localvicinity='';
         							var intphonenum='';
         							var openinghours='';
-        							var user_ratings='';
-        							
-        							if (details.photos !== undefined) 
+
+        							if (details.photos !== undefined)
         							{for (j=0; j<=details.photos.length-1; j++)
         								{photogroup=photogroup+'<img src='+details.photos[j].getUrl({'maxWidth': 200, 'maxHeight': 100})+'>';}
         							}//end of if
-        							
+
         							if (details.formatted_address !== undefined)
-        								{var formaladdress = '<span class="title-window"><BR>PROPER ADDRESS:</span><span> '+ details.formatted_address + '</span>'}
+        								{formaladdress = '<span class="title-window"><BR>PROPER ADDRESS:</span><span> '+ details.formatted_address + '</span>';}
 									if (details.formatted_phone_number !== undefined)
-        								{var localnumber = '<BR><span class="title-window">LOCAL PHONE:</span><span> '+ details.formatted_phone_number + '</span>'}
+        								{localnumber = '<BR><span class="title-window">LOCAL PHONE:</span><span> '+ details.formatted_phone_number + '</span>';}
 									if (details.vicinity !== undefined)
-        								{var localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:</span><span> '+ details.vicinity + '</span>'}
+        								{localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:</span><span> '+ details.vicinity + '</span>';}
 									if (details.international_phone_number !== undefined)
-        								{var intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:</span><span> '+ details.international_phone_number +  '</span>'}
-									if (details.opening_hours !== undefined) 
-        								{var openinghours = '<BR><span class="title-window">OPENING HOURS:<BR></span><span>'+ 
-                                                details.opening_hours.weekday_text[0] + '<BR>' + 
-                                                details.opening_hours.weekday_text[1] + '<BR>'+ 
-                                                details.opening_hours.weekday_text[2] + '<BR>'+ 
-                                                details.opening_hours.weekday_text[3] + '<BR>'+ 
-                                                details.opening_hours.weekday_text[4] + '<BR>'+ 
-                                                details.opening_hours.weekday_text[5] + '</span>'}
-        					     	if (details.rating !== undefined) 
-        								{var user_ratings = '<BR><span class="title-window">User Ratings:</span><span> '+ details.rating + '<BR></span>'}
+        								{intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:</span><span> '+ details.international_phone_number +  '</span>';}
+									if (details.opening_hours !== undefined)
+        								{openinghours = '<BR><span class="title-window">OPENING HOURS:<BR></span><span>'+
+                                                details.opening_hours.weekday_text[0] + '<BR>' +
+                                                details.opening_hours.weekday_text[1] + '<BR>'+
+                                                details.opening_hours.weekday_text[2] + '<BR>'+
+                                                details.opening_hours.weekday_text[3] + '<BR>'+
+                                                details.opening_hours.weekday_text[4] + '<BR>'+
+                                                details.opening_hours.weekday_text[5] + '</span>';}
+        					     	if (details.rating !== undefined)
+        								{user_ratings = '<BR><span class="title-window">User Ratings:</span><span> '+ details.rating + '<BR></span>';}
 
         							//holds the google place data
             						placecontent =
@@ -389,50 +387,52 @@ var ViewModel = function () {
             						      		localvicinity+
             							  		localnumber+
             							  		intphonenum+'</div>'+
-            							  	'<div><BR>'+openinghours+'</div>'+            							  
+            							  	'<div><BR>'+openinghours+'</div>'+
             							  	'<div><BR>'+user_ratings+
-	            						'</div>'}
+	            						'</div>';}
 
-	            					weather = '<div id="wxWrap"><span id="wxIntro">Current Weather: </span><span id="wxIcon2"></span><span id="wxTemp"></span></div>'	
+	            					var weather = '<div id="wxWrap"><span id="wxIntro">Current Weather: </span><span id="wxIcon2"></span><span id="wxTemp"></span></div>';
 
-	            					//combines all the info that will be added to the infowindo	
-            						var finalcontent = content+placecontent+weather;	
+	            					//combines all the info that will be added to the infowindo
+            						var finalcontent = content+placecontent+weather;
             						infowindow.setContent(finalcontent);
+
 						 	} //end of function (details,status)
 	  					); //end of service getdetails
-								
+						map.setCenter(plmarker.position);
 						infowindow.open(map, this);
-					} //end of return function 
+
+					}; //end of return function
 					} (contentString, placedetailID, jpzip)
 				);//end of eventaddListener Infowindow
        } //end of for loop
 
 	self.listArray.splice(x);
-} //end of initialize
+}; //end of initialize
 
 
 //search the items using the categories food, hotel, shops, attractions, all
-self.searchcat = function(type) 
+self.searchcat = function(type)
 {
 	self.searchcategory = ko.computed(
     function()
     {var query = type;
     self.listArray.splice(0);
-	   return ko.utils.arrayFilter(self.filterArray(), 
-	        function(marker) 
+	   return ko.utils.arrayFilter(self.filterArray(),
+	        function(marker)
             {if (type == 'all')
 				{if (marker.category.toLowerCase().indexOf(query) > -1)
              		{self.listArray.push(marker);
-                	 return marker.category.toLowerCase().indexOf(query) > -1;}}	        
+                	 return marker.category.toLowerCase().indexOf(query) > -1;}}
             else
             	{if (marker.subcategory.toLowerCase().indexOf(query) > -1)
 	           		{self.listArray.push(marker);
                 	 return marker.subcategory.toLowerCase().indexOf(query) > -1;}}
-            }//end of function marker 
+            }//end of function marker
 		);//end of ko.utils.arrayFilter
 	},self//end of function
 	);//end of kocomputed
-}//end of searchcat
+};//end of searchcat
 
 
 
@@ -441,12 +441,12 @@ self.searchitem = ko.computed(
     function()
     {var query = self.query().toLowerCase();
 	   self.listArray.splice(0);
-	   return ko.utils.arrayFilter(self.filterArray(), 
-	        function(marker) 
+	   return ko.utils.arrayFilter(self.filterArray(),
+	        function(marker)
             {if (marker.title.toLowerCase().indexOf(query) > -1)
 	           	{self.listArray.push(marker);
-                 return marker.title.toLowerCase().indexOf(query) > -1;};
-            }//end of function marker 
+                 return marker.title.toLowerCase().indexOf(query) > -1;}
+            }//end of function marker
 		);//end of ko.utils.arrayFilter
 	},self//end of function
 );//end of kocomputed
@@ -454,12 +454,12 @@ self.searchitem = ko.computed(
 
 //Makes sure the markers will appear or disapper from the the map based on the search inquery
 self.listArray.subscribe(
-	function() 
+	function()
 	{var differences = ko.utils.compareArrays(self.filterArray(), self.listArray());
-     ko.utils.arrayForEach(differences, 
-     	function(marker) 
-     	{if (marker.status == 'deleted') 
-        	{marker.value.setMap(null);} 
+     ko.utils.arrayForEach(differences,
+     	function(marker)
+     	{if (marker.status == 'deleted')
+        	{marker.value.setMap(null);}
         else
          	{marker.value.setMap(map);}
    	});//end of koutilsarrayforEach
@@ -475,7 +475,7 @@ self.listArray.subscribe(
 // Event Listener that will run the initialize function when the window loads
 google.maps.event.addDomListener(window, 'load', initialize);
 
-}//end of ViewModel
+};//end of ViewModel
 
 // Apply all ViewModel knockout bindings
 ko.applyBindings(ViewModel);
