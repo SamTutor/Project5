@@ -260,12 +260,14 @@ var ViewModel = function () {
                 origin: new google.maps.Point(0,0), // origin
                 anchor: new google.maps.Point(0, 0) // anchor
             };//end of icon
-
+            console.log(markerArray[x].title.toUpperCase());
 		    var contentwindow =
-               '<div class="info-window">' +
-               		'<div class="name-window"><img class="icon-window" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' :&nbsp'+ markerArray[x].title.toUpperCase() + '</div>' +
-               		'<div class="geo-window">Latitude: ' + markerArray[x].lat + ' &nbsp Longitude: ' + markerArray[x].longit + ' </div></div>'+
-   					'<div class="web-window"><a href=' + markerArray[x].url + ' target="_blank">Go to website for more info</a></div>'+
+               '<div class="modal-content">' +
+             		'<div class="modal-header container_margin>' +
+             				'<div class="modal-title container_margin"><img class="icon-window" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' : '+ markerArray[x].title.toUpperCase() +'</div>' +
+              		 '</div>' +
+               		'<div class="geo-window container_margin">LATITUDE: ' + markerArray[x].lat + ' &nbsp LONGITUDE: ' + markerArray[x].longit + '</div>' +
+   					'<div class="web-window container_margin"><a href=' + markerArray[x].url + ' target="_blank">Go to website for more info</a></div>'+
    				'</div>';
 
             var plmarker = new google.maps.Marker({

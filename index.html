@@ -2,61 +2,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-	<!-- What happens when the internet goes down -->
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+  <meta content="text/javascript; charset=utf-8" http-equiv="Content-Type">
+
+  <!-- What happens when the internet goes down -->
 	<link rel="stylesheet" href="lib/themes/offline-theme-chrome.css" />
 	<link rel="stylesheet" href="lib/themes/offline-language-english.css" />
 	<script src="lib/offline.min.js"></script>
 
+  <!-- Bootstrap CSS to make a responsive page -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-	<meta content="text/javascript; charset=utf-8" http-equiv="Content-Type">
+  <!-- CSS Style Sheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Loading the Google_API -->
+  <script asynch type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+  <script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
 	<title>Project 5 Nanodegree Udacity</title>
-
-	<link rel="stylesheet" href="css/style.css">
-
-	<!-- Loading the Google_API -->
-	<script asynch src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-	<script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 </head>
 
 
 <body>
 
-  <div>
-    <!-- Create the Container to hold the title-->
-  	<div><h1 class="container_title">Visting Toyko, Japan</h1></div>
+  <div class="container">
 
-    <!-- Create the Container to hold the map -->
-    <div class="container_map" id="googleMap"></div>
+  	<div class="row">
 
-    <!--- Create the Container to hold the list -->
-    <div class="container_list">
+      <!-- Create the Container to hold the title -->
+      <div class="col-md-6 title_format"><h1>Toyko, Japan</h1></div>
 
-      <!-- Search Feature -->
-      <div>
-        <input class="search_class" type="search" placeholder="Search..." data-bind="value: query, valueUpdate: 'afterkeydown'">
-        <BUTTON class="button_class" onclick = "searchcat('all')">RESET</button>
-      </div>
-
-      <div><BR></div>
+      <!-- Create the Container to hold the search feature -->
+      <div class="col-md-6">
+        <div class="form-group search_format">
+          <label for="srch">Search:</label>
+          <input type="search" ckass-"form-control" placeholder="Search..." data-bind="value: query, valueUpdate: 'afterkeydown'" id="srch">
+        </div>
 
       <!-- Category Search -->
-      <div>
-        <BUTTON onclick = "searchcat('food')" class="button_class"><IMG SRC="images/foodlist.png" width="35" alt="FOOD"><BR>FOOD</button>
-        <BUTTON onclick = "searchcat('hotel')" class="button_class"><IMG SRC="images/hotellist.png" width="35" alt="HOTEL"><BR>HOTEL</button>
-        <BUTTON onclick = "searchcat('shopping')" class="button_class"><IMG SRC="images/shoplist.png" width="35" alt="SHOPS"><BR>SHOPS</button>
-        <BUTTON onclick = "searchcat('sites')" class="button_class"><IMG SRC="images/cameralist.png" width="35" alt="ATTRACTIONS"><BR>ATTRACTIONS</button>
-      </div>
+       <div class="btn-group menu_format">
+         <BUTTON type="button" onclick = "searchcat('food')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/foodlist.png" width="40" alt="FOOD"><BR>FOOD</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('hotel')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/hotellist.png" width="39" alt="HOTEL"><BR>HOTEL</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('shopping')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/shoplist.png" width="40" alt="SHOPS"><BR>SHOPS</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('sites')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/cameralist.png" width="40" alt="FUN"><BR>FUN</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('all')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/alllist.png" width="40" alt="RESET"><BR>ALL</BUTTON>
+       </div>
 
-      <!-- List the Marker Locations -->
-      <div id="googleList">
-        <ul data-bind="foreach: listArray">
-          <img data-bind="attr: {src: iconlist}, click: openinfowindow" width="20px">&nbsp<span class="list_class" data-bind="text: title, click: openinfowindow"></span>&nbsp(<a class="web_class" data-bind="attr: {href: url}" target="_blank">website</a>)<br>
+    </div><!-- end of row -->
+
+    <div class="row">
+
+      <!-- Create the Container to hold the map -->
+      <div class="col-md-6 map_format" id="googleMap"></div>
+
+      <!--- Create the Container to hold the list -->
+      <div class="col-md-6 list_format">
+          <!-- List the Marker Locations -->
+          <ul data-bind="foreach: listArray">
+            <img data-bind="attr: {src: iconlist}, click: openinfowindow" width="20px">&nbsp<span class="list_class" data-bind="text: title, click: openinfowindow"></span>&nbsp(<a class="web_class" data-bind="attr: {href: url}" target="_blank">website</a>)<BR>
           </ul>
-      </div>
+       </div>
 
-    </div>
+    </div> <!-- end of row -->
 
-  </div>
+  </div> <!-- end of container -->
 
   <script type="text/javascript"  asynch src='js/knockout-3.3.0.js'></script>
   <script type="text/javascript"  asynch src='js/ViewMod.js'></script>

@@ -1,84 +1,39 @@
-/* CSS goes here */
-html {height:100%}
-body {height:100%}
+body {
+     margin: 1%;
+     padding: 1%;
+ }
 
-div {width="100%"}
+.title_format {
+  vertical-align: middle;
+  min-width:300px;}
 
-.info-window {
-    width: 400px;
+.search_format {
+  text-align: left;
+  min-width:300px;}
+
+.menu_format {
+  margin:1%;
+  min-width:350px;
 }
 
-.name-window {
-  font-family: "Times New Roman", Times, serif;
-   font-size: 20px;
-   font-weight: bold;
+.map_format {
+
+  float:left;
+     min-width: 350px;
+     min-height: 350px;
+     margin-left: 5%;
 }
 
-.icon-window {
-    width:20px;
-}
+.list_format {
 
-.geo-window {
-  font-family: "Times New Roman", Times, serif;
-   font-size: 10px;
-   font-weight: bold;
-}
-
-.web-window {
-  font-family: "Times New Roman", Times, serif;
-   font-size: 20px;
-   font-weight: bold;
-}
-
-.title-window {
-  font-family: "Times New Roman", Times, serif;
-   font-size: 14px;
-   font-weight: bold;
+  float:right;
+     min-width: 350px;
+     min-height: 350px;
+     margin-top: 5%;
+     margin-right: 5%;
 }
 
 
-
-.list_class {   
-    font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
-}
-
-.web_class {   
-    font-family: "Times New Roman", Times, serif;
-    font-size: 10px;
-}
-
-
-.container_title{
-   font-family: "Times New Roman", Times, serif;
-   font-size: 40px;
-   font-weight: bold;
-
-} 
-
-.container_map {
-    width: 65%;
-    height: 750px;
-    position: absolute; 
-    float: left;
-}
-
-.container_list {
-    width: 30%; 
-    float: right;
-}
-
-.button_class {
-   font-family: "Times New Roman", Times, serif;
-   font-size: 12px;
-   font-weight: bold;
-} 
-
-
-.search_class {
-   font-family: "Times New Roman", Times, serif;
-   font-size: 14px;
-} 
 
 #wxWrap {
     width: 350px;
