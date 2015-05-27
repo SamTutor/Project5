@@ -18,19 +18,16 @@ body {
 
 .map_format {
 
-  float:left;
      min-width: 350px;
      min-height: 350px;
-     margin-left: 5%;
+
 }
 
 .list_format {
 
-  float:right;
      min-width: 350px;
      min-height: 350px;
-     margin-top: 5%;
-     margin-right: 5%;
+
 }
 
 
