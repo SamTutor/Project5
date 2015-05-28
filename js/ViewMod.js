@@ -318,12 +318,19 @@ var initialize = function() {
         		if (details.formatted_address !== undefined) {
         		    formaladdress = '<span class="title-window"><BR>PROPER ADDRESS:<BR></span><span> '+ details.formatted_address + '</span>';
         		}
+
 			if (details.formatted_phone_number !== undefined) {
-			    localnumber = '<BR><span class="title-window">LOCAL PHONE:<BR></span><span> '+ details.formatted_phone_number + '</span>';}
+			    localnumber = '<BR><span class="title-window">LOCAL PHONE:<BR></span><span> '+ details.formatted_phone_number + '</span>';
+			}
+
 			if (details.vicinity !== undefined) {
-        		    localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:<BR></span><span> '+ details.vicinity + '</span>';}
+        		    localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:<BR></span><span> '+ details.vicinity + '</span>';
+			}
+
 			if (details.international_phone_number !== undefined) {
-        		    intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:<BR></span><span> '+ details.international_phone_number +  '</span>';}
+        		    intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:<BR></span><span> '+ details.international_phone_number +  '</span>';
+			}
+
 			if (details.opening_hours !== undefined) {
         		    openinghours = '<BR><span class="title-window">OPENING HOURS:<BR></span><span>'+
                             details.opening_hours.weekday_text[0] + '<BR>' +
@@ -333,106 +340,100 @@ var initialize = function() {
                             details.opening_hours.weekday_text[4] + '<BR>'+
                             details.opening_hours.weekday_text[5] + '</span>';
 			}
+
                         if (details.rating !== undefined) {
-        		    user_ratings = '<BR><span class="title-window">User Ratings:</span><span> '+ details.rating + '<BR></span>';}
+        		    user_ratings = '<BR><span class="title-window">User Ratings:</span><span> '+ details.rating + '<BR></span>';
+	
+                        }
 
-        							//holds the google place data
-            						placecontent =
-            				  			'<div>'+
-            						    	'<div><BR>'+photogroup+'</div>'+
-            						    	'<div>'+formaladdress+
-            						      		localvicinity+
-            							  		localnumber+
-            							  		intphonenum+'</div>'+
-            							  	'<div>'+openinghours+'</div>'+
-            							  	'<div>'+user_ratings+
-	            						'</div>';}
+        		//holds the google place data
+            		placecontent ='<div>'+
+            			          '<div><BR>'+photogroup+'</div>'+
+            			          '<div>'+formaladdress+
+            			                  localvicinity+
+            					  localnumber+
+            					  intphonenum+'</div>'+
+            				  '<div>'+openinghours+'</div>'+
+            				  '<div>'+user_ratings+
+	            		 	'</div>';
+	      	   } //end of if status
 
-	            					var weather = '<div id="wxWrap"><span id="wxIntro">Current Weather: </span><span id="wxIcon2"></span><span id="wxTemp"></span></div>';
+	           var weather = '<div id="wxWrap"><span id="wxIntro">Current Weather: </span><span id="wxIcon2"></span><span id="wxTemp"></span></div>';
 
-	            					//combines all the info that will be added to the infowindo
-            						var finalcontent = content+placecontent+weather;
-            						infowindow.setContent(finalcontent);
-
-						 	} //end of function (details,status)
-	  					); //end of service getdetails
-						map.setCenter(plmarker.position);
-						infowindow.open(map, this);
-
-					}; //end of return function
-					} (contentString, placedetailID, jpzip)
-				);//end of eventaddListener Infowindow
+	           //combines all the info that will be added to the infowindo
+            	   var finalcontent = content+placecontent+weather;
+            	   infowindow.setContent(finalcontent);
+	 	
+		});  //end of function (details,status) and service getdetails
+	
+	    map.setCenter(plmarker.position);
+	    infowindow.open(map, this);
+   	    }; //end of return function
+	} (contentString, placedetailID, jpzip)
+	
+	);//end of eventaddListener Infowindow
        } //end of for loop
-
-	self.listArray.splice(x);
+    self.listArray.splice(x);
 }; //end of initialize
 
 //resets the marker on the map
-self.resetmarker = function()
-{
-map.setCenter(myCenter);
+self.resetmarker = function() {
+    map.setCenter(myCenter);
 }
 
 //search the items using the categories food, hotel, shops, attractions, all
-self.searchcat = function(type)
-{
-	self.searchcategory = ko.computed(
-    function()
-    {var query = type;
-    self.listArray.splice(0);
-	   return ko.utils.arrayFilter(self.filterArray(),
-	        function(marker)
-            {if (type == 'all')
-				{if (marker.category.toLowerCase().indexOf(query) > -1)
-             		{self.listArray.push(marker);
-                	 return marker.category.toLowerCase().indexOf(query) > -1;}}
-            else
-            	{if (marker.subcategory.toLowerCase().indexOf(query) > -1)
-	           		{self.listArray.push(marker);
-                	 return marker.subcategory.toLowerCase().indexOf(query) > -1;}}
-            }//end of function marker
-		);//end of ko.utils.arrayFilter
-	},self//end of function
-	);//end of kocomputed
+self.searchcat = function(type) {
+    self.searchcategory = ko.computed(function() {
+    	var query = type;
+        self.listArray.splice(0);
+	return ko.utils.arrayFilter(self.filterArray(), function(marker) {
+	    if (type == 'all') {
+	    	if (marker.category.toLowerCase().indexOf(query) > -1) {
+	    		self.listArray.push(marker);
+                	 return marker.category.toLowerCase().indexOf(query) > -1;
+	    	
+	    	}
+	    
+	    }
+            else {
+            	if (marker.subcategory.toLowerCase().indexOf(query) > -1) {
+            	    self.listArray.push(marker);
+                     return marker.subcategory.toLowerCase().indexOf(query) > -1;
+            	}
+            }
+	});//end of ko.utils.arrayFilter
+    },self);//end of kocomputed
 };//end of searchcat
 
-
-
 //search the items using the filter text
-self.searchitem = ko.computed(
-    function()
-    {var query = self.query().toLowerCase();
-	   self.listArray.splice(0);
-	   return ko.utils.arrayFilter(self.filterArray(),
-	        function(marker)
-            {if (marker.title.toLowerCase().indexOf(query) > -1)
-	           	{self.listArray.push(marker);
-                 return marker.title.toLowerCase().indexOf(query) > -1;}
-            }//end of function marker
-		);//end of ko.utils.arrayFilter
-	},self//end of function
-);//end of kocomputed
-
+self.searchitem = ko.computed(function() {
+    var query = self.query().toLowerCase();
+    self.listArray.splice(0);
+    return ko.utils.arrayFilter(self.filterArray(), function(marker) {
+        if (marker.title.toLowerCase().indexOf(query) > -1) {
+            self.listArray.push(marker);
+            return marker.title.toLowerCase().indexOf(query) > -1;
+        }
+     });//end of ko.utils.arrayFilter
+},self );//end of kocomputed
 
 //Makes sure the markers will appear or disapper from the the map based on the search inquery
-self.listArray.subscribe(
-	function()
-	{var differences = ko.utils.compareArrays(self.filterArray(), self.listArray());
-     ko.utils.arrayForEach(differences,
-     	function(marker)
-     	{if (marker.status == 'deleted')
-        	{marker.value.setMap(null);}
-        else
-         	{marker.value.setMap(map);}
-   	});//end of koutilsarrayforEach
+self.listArray.subscribe(function(){
+    var differences = ko.utils.compareArrays(self.filterArray(), self.listArray());
+    ko.utils.arrayForEach(differences, function(marker) {
+    	if (marker.status == 'deleted') {
+            marker.value.setMap(null);
+    	}
+        else {
+            marker.value.setMap(map);
+        }
+   });//end of koutilsarrayforEach
 });//end of subscribe
 
-
 //open the infowindow by click on the listed items
-  self.openinfowindow = function(openinfo) {
-        google.maps.event.trigger(openinfo, 'click');
-    };
-
+self.openinfowindow = function(openinfo) {
+    google.maps.event.trigger(openinfo, 'click');
+};
 
 // Event Listener that will run the initialize function when the window loads
 google.maps.event.addDomListener(window, 'load', initialize);
