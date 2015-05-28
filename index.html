@@ -7,18 +7,18 @@
     <meta name="HandheldFriendly" content="true">
     <meta content="text/javascript; charset=utf-8" http-equiv="Content-Type">
 
-  <!-- What happens when the internet goes down -->
+    <!-- What happens when the internet goes down -->
     <link rel="stylesheet" href="lib/themes/offline-theme-chrome.css" />
     <link rel="stylesheet" href="lib/themes/offline-language-english.css" />
     <script src="lib/offline.min.js"></script>
 
-  <!-- Bootstrap CSS to make a responsive page -->
+    <!-- Bootstrap CSS to make a responsive page -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-  <!-- CSS Style Sheet -->
+    <!-- CSS Style Sheet -->
     <link rel="stylesheet" href="css/style.css">
 
-  <!-- Loading the Google_API -->
+    <!-- Loading the Google_API -->
     <script asynch type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
@@ -58,12 +58,15 @@
            </div><!-- end of Map Container -->
 
       <div><BR></div>
+      
       <!--- Create the Container to hold the list -->
       <div class="col-md-6 list_format">
+          
           <!-- List the Marker Locations -->
           <ul data-bind="foreach: listArray">
             <img data-bind="attr: {src: iconlist}, click: openinfowindow" width="20px">&nbsp<span class="list_class" data-bind="text: title, click: openinfowindow"></span>&nbsp(<a class="web_class" data-bind="attr: {href: url}" target="_blank">website</a>)<BR>
           </ul>
+       
        </div>
 
     </div> <!-- end of row -->
@@ -74,5 +77,4 @@
   <script type="text/javascript"  asynch src='js/ViewMod.js'></script>
 
 </body>
-
 </html>
