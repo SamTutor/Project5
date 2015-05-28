@@ -2,64 +2,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="HandheldFriendly" content="true">
-  <meta content="text/javascript; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <meta content="text/javascript; charset=utf-8" http-equiv="Content-Type">
 
   <!-- What happens when the internet goes down -->
-	<link rel="stylesheet" href="lib/themes/offline-theme-chrome.css" />
-	<link rel="stylesheet" href="lib/themes/offline-language-english.css" />
-	<script src="lib/offline.min.js"></script>
+    <link rel="stylesheet" href="lib/themes/offline-theme-chrome.css" />
+    <link rel="stylesheet" href="lib/themes/offline-language-english.css" />
+    <script src="lib/offline.min.js"></script>
 
   <!-- Bootstrap CSS to make a responsive page -->
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   <!-- CSS Style Sheet -->
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
   <!-- Loading the Google_API -->
-  <script asynch type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
-  <script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script asynch type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <script asynch type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 
-	<title>Project 5 Nanodegree Udacity</title>
+    <title>Project 5 Nanodegree Udacity</title>
 </head>
 
-
 <body>
+    <div class="container">
+       <div class="row">
+       
+           <!-- Create the Container to hold the title -->
+           <div class="col-md-6 title_format"><h1>Tokyo, Japan</h1></div>
+           
+           <!-- Create the Container to hold the search feature -->
+           <div class="col-md-6">
+               <div class="form-group search_format">
+                   <label for="srch">Search:</label>
+                   <input type="search" ckass-"form-control" placeholder="Search..." data-bind="value: query, valueUpdate: 'afterkeydown'" id="srch">
+               </div>
+               <!-- Category Search -->
+               <div class="btn-group menu_format">
+                   <button type="button" onclick = "searchcat('food')" class="btn btn-primary"><img class="img-responsive img-rounded"  src="images/foodlist.png" width="40" alt="FOOD"><br>FOOD</button>
+                   <button type="button" onclick = "searchcat('hotel')" class="btn btn-primary"><img class="img-responsive img-rounded"  src="images/hotellist.png" width="39" alt="HOTEL"><br>HOTEL</button>
+                   <button type="button" onclick = "searchcat('shopping')" class="btn btn-primary"><img class="img-responsive img-rounded"  src="images/shoplist.png" width="40" alt="SHOPS"><br>SHOPS</button>
+                   <button type="button" onclick = "searchcat('sites')" class="btn btn-primary"><img class="img-responsive img-rounded"  src="images/cameralist.png" width="40" alt="FUN"><br>FUN</button>
+                   <button type="button" onclick = "searchcat('all')" class="btn btn-primary"><img class="img-responsive img-rounded" src="images/alllist.png" width="40" alt="ALL"><br>ALL</button>
+               </div>
+           </div><!-- end of search Container -->
+       
+       </div><!-- end of row -->
 
-  <div class="container">
-
-  	<div class="row">
-
-      <!-- Create the Container to hold the title -->
-      <div class="col-md-6 title_format"><h1>Tokyo, Japan</h1></div>
-
-      <!-- Create the Container to hold the search feature -->
-      <div class="col-md-6">
-        <div class="form-group search_format">
-          <label for="srch">Search:</label>
-          <input type="search" ckass-"form-control" placeholder="Search..." data-bind="value: query, valueUpdate: 'afterkeydown'" id="srch">
-        </div>
-
-      <!-- Category Search -->
-       <div class="btn-group menu_format">
-         <BUTTON type="button" onclick = "searchcat('food')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/foodlist.png" width="40" alt="FOOD"><BR>FOOD</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('hotel')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/hotellist.png" width="39" alt="HOTEL"><BR>HOTEL</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('shopping')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/shoplist.png" width="40" alt="SHOPS"><BR>SHOPS</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('sites')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/cameralist.png" width="40" alt="FUN"><BR>FUN</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('all')" class="btn btn-primary"><IMG class="img-responsive img-rounded" SRC="images/alllist.png" width="40" alt="ALL"><BR>ALL</BUTTON>
-       </div>
-
-    </div><!-- end of row -->
-
-    <div class="row">
-
-      <!-- Create the Container to hold the map -->
-      <div class="col-md-6">
-        <div class="map_format" id="googleMap"></div>
-        <div class="reset_format"><BUTTON type="button" onclick = "resetmarker()" class="btn btn-default btn-sm">RESET</BUTTON></div>
-      </div>
+       <div class="row">
+           <!-- Create the Container to hold the map -->
+           <div class="col-md-6">
+               <div class="map_format" id="googleMap"></div>
+               <div class="reset_format"><BUTTON type="button" onclick = "resetmarker()" class="btn btn-default btn-sm">RESET</BUTTON></div>
+           </div><!-- end of Map Container -->
 
       <div><BR></div>
       <!--- Create the Container to hold the list -->
