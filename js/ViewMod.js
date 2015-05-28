@@ -176,16 +176,17 @@ var ViewModel = function () {
     var map, // Creation of the map 
         myCenter = new google.maps.LatLng(35.687589, 139.753516), //The location of the center of the map
         markerArray = Model.markerlocations, // Array that stores the marker locations
-        self = this, // assigning self to equal this
-        self.listArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.filterArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.allArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.listArray.splice(0), // List(s) that stores the marker locations
-        self.filterArray.splice(0), // List(s) that stores the marker locations
-        self.query = ko.observable(""), //Searches the markers
-        self.searchItem = ko.observableArray(), //Searches the markers
         placecontent, //initialize the variables for the google place details of the markers
-        service;
+        service, //initialize the variables for the google place details of the markers
+        self = this; // assigning self to equal this
+        self.listArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.filterArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.allArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.listArray.splice(0); // List(s) that stores the marker locations
+        self.filterArray.splice(0); // List(s) that stores the marker locations
+        self.query = ko.observable(""); //Searches the markers
+        self.searchItem = ko.observableArray(); //Searches the markers
+        
 
 // Initializing the Map
 var initialize = function() {
