@@ -178,17 +178,16 @@ var ViewModel = function () {
         markerArray = Model.markerlocations, // Array that stores the marker locations
         placecontent, //initialize the variables for the google place details of the markers
         service, //initialize the variables for the google place details of the markers
-        self = this; // assigning self to equal this
-        
-        self.listArray = ko.observableArray(); // List(s) that stores the marker locations
-        self.filterArray = ko.observableArray(); // List(s) that stores the marker locations
-        self.allArray = ko.observableArray(); // List(s) that stores the marker locations
-        self.listArray.splice(0); // List(s) that stores the marker locations
-        self.filterArray.splice(0); // List(s) that stores the marker locations
-        self.query = ko.observable(""); //Searches the markers
+        self = this, // assigning self to equal this
+        self.listArray = ko.observableArray(), // List(s) that stores the marker locations
+        self.filterArray = ko.observableArray(), // List(s) that stores the marker locations
+        self.allArray = ko.observableArray(), // List(s) that stores the marker locations
+        self.query = ko.observable(""), //Searches the markers
         self.searchItem = ko.observableArray(); //Searches the markers
         
-
+	self.listArray.splice(0); // List(s) that stores the marker locations
+        self.filterArray.splice(0); // List(s) that stores the marker locations
+        
 // Initializing the Map
 var initialize = function() {
 // Default Map Properties
@@ -371,9 +370,7 @@ var initialize = function() {
 	    map.setCenter(plmarker.position);
 	    infowindow.open(map, this);
    	    }; //end of return function
-	} (contentString, placedetailID, jpzip);
-	
-	);//end of eventaddListener Infowindow
+	} (contentString, placedetailID, jpzip));//end of eventaddListener Infowindow
        } //end of for loop
     self.listArray.splice(x);
 }; //end of initialize
