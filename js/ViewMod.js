@@ -381,7 +381,7 @@ var initialize = function() {
 //resets the marker on the map
 self.resetmarker = function() {
     map.setCenter(myCenter);
-}
+};
 
 //search the items using the categories food, hotel, shops, attractions, all
 self.searchcat = function(type) {
