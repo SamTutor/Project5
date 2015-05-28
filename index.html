@@ -14,7 +14,6 @@
 
   <!-- Bootstrap CSS to make a responsive page -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
   <!-- CSS Style Sheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -34,7 +33,7 @@
   	<div class="row">
 
       <!-- Create the Container to hold the title -->
-      <div class="col-md-6 title_format"><h1>Toyko, Japan</h1></div>
+      <div class="col-md-6 title_format"><h1>Tokyo, Japan</h1></div>
 
       <!-- Create the Container to hold the search feature -->
       <div class="col-md-6">
@@ -45,11 +44,11 @@
 
       <!-- Category Search -->
        <div class="btn-group menu_format">
-         <BUTTON type="button" onclick = "searchcat('food')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/foodlist.png" width="40" alt="FOOD"><BR>FOOD</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('hotel')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/hotellist.png" width="39" alt="HOTEL"><BR>HOTEL</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('shopping')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/shoplist.png" width="40" alt="SHOPS"><BR>SHOPS</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('sites')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/cameralist.png" width="40" alt="FUN"><BR>FUN</BUTTON>
-         <BUTTON type="button" onclick = "searchcat('all')" class="btn btn-primary img-responsive img-rounded"><IMG SRC="images/alllist.png" width="40" alt="RESET"><BR>ALL</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('food')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/foodlist.png" width="40" alt="FOOD"><BR>FOOD</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('hotel')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/hotellist.png" width="39" alt="HOTEL"><BR>HOTEL</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('shopping')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/shoplist.png" width="40" alt="SHOPS"><BR>SHOPS</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('sites')" class="btn btn-primary"><IMG class="img-responsive img-rounded"  SRC="images/cameralist.png" width="40" alt="FUN"><BR>FUN</BUTTON>
+         <BUTTON type="button" onclick = "searchcat('all')" class="btn btn-primary"><IMG class="img-responsive img-rounded" SRC="images/alllist.png" width="40" alt="ALL"><BR>ALL</BUTTON>
        </div>
 
     </div><!-- end of row -->
@@ -57,7 +56,10 @@
     <div class="row">
 
       <!-- Create the Container to hold the map -->
-      <div class="col-md-6 map_format" id="googleMap"></div>
+      <div class="col-md-6">
+        <div class="map_format" id="googleMap"></div>
+        <div class="reset_format"><BUTTON type="button" onclick = "resetmarker()" class="btn btn-default btn-sm">RESET</BUTTON></div>
+      </div>
 
       <div><BR></div>
       <!--- Create the Container to hold the list -->

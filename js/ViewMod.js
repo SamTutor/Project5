@@ -235,7 +235,7 @@ var ViewModel = function () {
         // Assigns a marker to be the the central marker that will have the position of the center of the map and a infowindow
         var marker = new google.maps.Marker({position: myCenter});
         marker.setMap(map);
-        var infomarker = new google.maps.InfoWindow({content:"Welcome to Chiyoda, Tokyo (Japan)"});
+        var infomarker = new google.maps.InfoWindow({content:"Welcome!"});
 
         // Event Listener that opens up the infowindow when the user clicks on the central marker
         google.maps.event.addListener(marker, 'click', function() {
@@ -260,14 +260,14 @@ var ViewModel = function () {
                 origin: new google.maps.Point(0,0), // origin
                 anchor: new google.maps.Point(0, 0) // anchor
             };//end of icon
-            console.log(markerArray[x].title.toUpperCase());
+
 		    var contentwindow =
                '<div class="modal-content">' +
-             		'<div class="modal-header container_margin>' +
-             				'<div class="modal-title container_margin"><img class="icon-window" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' : '+ markerArray[x].title.toUpperCase() +'</div>' +
-              		 '</div>' +
-               		'<div class="geo-window container_margin">LATITUDE: ' + markerArray[x].lat + ' &nbsp LONGITUDE: ' + markerArray[x].longit + '</div>' +
-   					'<div class="web-window container_margin"><a href=' + markerArray[x].url + ' target="_blank">Go to website for more info</a></div>'+
+             		'<div class="modal-header">' +
+             				'<div><h4 class="modal-title"><img width="20px" src=' + markerArray[x].iconlist + '>&nbsp' + markerArray[x].subcategory.toUpperCase() + ' : '+ markerArray[x].title.toUpperCase() +'</h4></div>' +
+              				'<p class="modal-body">LATITUDE: ' + markerArray[x].lat + ' &nbsp LONGITUDE: ' + markerArray[x].longit + '<br>' +
+   							'<a href=' + markerArray[x].url + ' target="_blank">Go to website for more info</a></p>'+
+   					'</div>' +
    				'</div>';
 
             var plmarker = new google.maps.Marker({
@@ -363,13 +363,13 @@ var ViewModel = function () {
         							}//end of if
 
         							if (details.formatted_address !== undefined)
-        								{formaladdress = '<span class="title-window"><BR>PROPER ADDRESS:</span><span> '+ details.formatted_address + '</span>';}
+        								{formaladdress = '<span class="title-window"><BR>PROPER ADDRESS:<BR></span><span> '+ details.formatted_address + '</span>';}
 									if (details.formatted_phone_number !== undefined)
-        								{localnumber = '<BR><span class="title-window">LOCAL PHONE:</span><span> '+ details.formatted_phone_number + '</span>';}
+        								{localnumber = '<BR><span class="title-window">LOCAL PHONE:<BR></span><span> '+ details.formatted_phone_number + '</span>';}
 									if (details.vicinity !== undefined)
-        								{localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:</span><span> '+ details.vicinity + '</span>';}
+        								{localvicinity = '<BR><span class="title-window">LOCAL ADDRESS:<BR></span><span> '+ details.vicinity + '</span>';}
 									if (details.international_phone_number !== undefined)
-        								{intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:</span><span> '+ details.international_phone_number +  '</span>';}
+        								{intphonenum = '<BR><span class="title-window">INTERNATIONAL PHONE:<BR></span><span> '+ details.international_phone_number +  '</span>';}
 									if (details.opening_hours !== undefined)
         								{openinghours = '<BR><span class="title-window">OPENING HOURS:<BR></span><span>'+
                                                 details.opening_hours.weekday_text[0] + '<BR>' +
@@ -389,8 +389,8 @@ var ViewModel = function () {
             						      		localvicinity+
             							  		localnumber+
             							  		intphonenum+'</div>'+
-            							  	'<div><BR>'+openinghours+'</div>'+
-            							  	'<div><BR>'+user_ratings+
+            							  	'<div>'+openinghours+'</div>'+
+            							  	'<div>'+user_ratings+
 	            						'</div>';}
 
 	            					var weather = '<div id="wxWrap"><span id="wxIntro">Current Weather: </span><span id="wxIcon2"></span><span id="wxTemp"></span></div>';
@@ -412,6 +412,11 @@ var ViewModel = function () {
 	self.listArray.splice(x);
 }; //end of initialize
 
+//resets the marker on the map
+self.resetmarker = function()
+{
+map.setCenter(myCenter);
+}
 
 //search the items using the categories food, hotel, shops, attractions, all
 self.searchcat = function(type)

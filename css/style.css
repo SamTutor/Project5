@@ -17,17 +17,28 @@ body {
 }
 
 .map_format {
-
      min-width: 350px;
      min-height: 350px;
-
 }
 
 .list_format {
-
      min-width: 350px;
      min-height: 350px;
+     font-family: "Times New Roman", Times, serif;
+   font-size: 14px;
+}
 
+.reset_format {
+  font-family: "Times New Roman", Times, serif;
+   font-size: 10px;
+   font-weight: bold;
+   text-align: right;
+}
+
+.title-window {
+  font-family: "Times New Roman", Times, serif;
+   font-size: 14px;
+   font-weight: bold;
 }
 
 
