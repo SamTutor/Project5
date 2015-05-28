@@ -1,48 +1,40 @@
 body {
      margin: 1%;
      padding: 1%;
- }
-
+}
 .title_format {
   vertical-align: middle;
-  min-width:300px;}
-
+  min-width:300px;
+}
 .search_format {
   text-align: left;
-  min-width:300px;}
-
+  min-width:300px;
+}
 .menu_format {
   margin:1%;
   min-width:350px;
 }
-
 .map_format {
      min-width: 350px;
      min-height: 350px;
 }
-
 .list_format {
      min-width: 350px;
      min-height: 350px;
      font-family: "Times New Roman", Times, serif;
    font-size: 14px;
 }
-
 .reset_format {
   font-family: "Times New Roman", Times, serif;
    font-size: 10px;
    font-weight: bold;
    text-align: right;
 }
-
 .title-window {
   font-family: "Times New Roman", Times, serif;
    font-size: 14px;
    font-weight: bold;
 }
-
-
-
 #wxWrap {
     width: 350px;
     background: #EEE; /* Old browsers */
