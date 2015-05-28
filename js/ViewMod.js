@@ -371,7 +371,7 @@ var initialize = function() {
 	    map.setCenter(plmarker.position);
 	    infowindow.open(map, this);
    	    }; //end of return function
-	} (contentString, placedetailID, jpzip)
+	} (contentString, placedetailID, jpzip);
 	
 	);//end of eventaddListener Infowindow
        } //end of for loop
