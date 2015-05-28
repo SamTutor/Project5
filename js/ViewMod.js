@@ -180,10 +180,10 @@ var ViewModel = function () {
         service, //initialize the variables for the google place details of the markers
         self = this; // assigning self to equal this
         
-        self.listArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.filterArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.allArray = ko.observableArray(), // List(s) that stores the marker locations
-        self.query = ko.observable(""), //Searches the markers
+        self.listArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.filterArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.allArray = ko.observableArray(); // List(s) that stores the marker locations
+        self.query = ko.observable(""); //Searches the markers
         self.searchItem = ko.observableArray(); //Searches the markers
         
 	self.listArray.splice(0); // List(s) that stores the marker locations
@@ -264,7 +264,7 @@ var initialize = function() {
         self.filterArray.push(plmarker);
         self.listArray.push(plmarker);
 
-        var jpzip = plmarker.worldzip.
+        var jpzip = plmarker.worldzip,
 	    contentString = plmarker.info,
 	    placedetailID = plmarker.placeid;
 
