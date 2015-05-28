@@ -178,7 +178,8 @@ var ViewModel = function () {
         markerArray = Model.markerlocations, // Array that stores the marker locations
         placecontent, //initialize the variables for the google place details of the markers
         service, //initialize the variables for the google place details of the markers
-        self = this, // assigning self to equal this
+        self = this; // assigning self to equal this
+        
         self.listArray = ko.observableArray(), // List(s) that stores the marker locations
         self.filterArray = ko.observableArray(), // List(s) that stores the marker locations
         self.allArray = ko.observableArray(), // List(s) that stores the marker locations
