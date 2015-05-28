@@ -371,8 +371,7 @@ var initialize = function() {
 	    infowindow.open(map, this);
    	    }; //end of return function
 	} (contentString, placedetailID, jpzip)
-    	
-    });//end of eventaddListener Infowindow
+    	));//end of eventaddListener Infowindow
        } //end of for loop
     self.listArray.splice(x);
 }; //end of initialize
