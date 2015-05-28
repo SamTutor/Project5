@@ -15,7 +15,7 @@ The Visting Toyko, Japan Google Map View is a tool that can be used to obtain in
 
 Installation
 ----------------
-1.You can run the app directly via this link
+1. You can run the app directly via this link
 http://htmlpreview.github.io/?https://rawgit.com/samauto/Project5/master/index.html
 
 2. You can click the Download Zip button which will download the files to your computer where you can run it from your PC etc or upload it to your own website
